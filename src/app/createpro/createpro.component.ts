@@ -1,13 +1,7 @@
-import { Component, OnInit,  EventEmitter, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Component} from '@angular/core';
+import {FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { UserdataService } from '../userdata.service';
-import { startWith, map } from 'rxjs/operators'
-
-import { cards } from '../models/cards'
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppRoutingModule } from '../app-routing.module';
 import { Title } from '@angular/platform-browser';
 
 
@@ -20,6 +14,9 @@ import { Title } from '@angular/platform-browser';
 export class CreateproComponent{
      profileform: FormGroup;
      pageTitle: string;
+    
+
+     
 
   constructor(private fromBuilder: FormBuilder, private userdataService:UserdataService,
     private router: Router, private route: ActivatedRoute, private titleService: Title) { 
@@ -51,44 +48,22 @@ export class CreateproComponent{
 
     this.profileform = this.fromBuilder.group({
       id: [''],
-      first:  ['',Validators.required],
-      lastname: ['',Validators.required],
+      first:  ['',[Validators.required]],
+      lastname: ['',[Validators.required]],
       eid: ['',[Validators.required, Validators.email]],
-      dob: ['',Validators.required],
-      country: ['Indian'],
+      dob: ['', [Validators.required]],
+      country: ['India'],
       imagepath: ['']
     });
 
   }
-
-getErrorMessageEmail(){
-  if(this.profileform.get('emailid').hasError('required')){
-    return 'You must enter a value in email field';
-  }
-  return this.profileform.get('emailid').hasError('email') ? 'Not a valid email' : '';
-}
-getErrorMessageFirstname(){
-  if(this.profileform.get('firstname').hasError('required')){
-    return 'You must enter a value in First-Name field';
-  }
-}
-getErrorMessageLastname(){
-  if(this.profileform.get('lastname').hasError('required')){
-    return 'You must enter a value in Last-Name field';
-  }
-}
-getErrorMessageDob(){
-  if(this.profileform.get('dob').hasError('required')){
-    return 'You must enter your Date Of Birth'
+  onSelectedFile(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.profileform.get('image').setValue(file);
+    }
   }
 
-}
-onSelectedFile(event){
-  if(event.target.files.length >0){
-    const file = event.target.files[0];
-    this.profileform.get('imagepath').setValue(file);
-  }
-}
 
 onResetForm()
 {
@@ -112,13 +87,13 @@ onSubmit()
 
     if (id) {
       this.userdataService.updateCard(formData, +id).subscribe(
-        res => {
+        () => {
             this.router.navigate(['/']);
         },
       );
     } else {
       this.userdataService.createCard(formData).subscribe(
-        res => {
+        () => {
             this.router.navigate(['/']); 
         },
       );
