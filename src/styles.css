@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+ 
+
+nav a.active {
+    color: #039be5;
+}
+.formContainer{
+    padding: 5% 7% 5% 7%;
+    width: 80%;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 3em;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: justify;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

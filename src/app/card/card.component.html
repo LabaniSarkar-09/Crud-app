@@ -1,0 +1,16 @@
+
+<div class="col mb-4">
+    <div class="card">
+      <img [src]="card.imagepath" class="card-img-top" alt="..." >
+      <div class="card-body">
+        <h1 class="item-card-title mt-3 mb-3"><a class="text-underline" [routerLink]="['/edit', card.id]" routerLinkActive="active">{{ card.first }} {{ card.lastname }} </a></h1>
+        <p class="card-text">Email id: {{ card.eid }}
+        </p>
+        <p class="card-text ">Age: {{ card.dob|age }}</p>
+      </div>
+      <h4 class="card-title text-right" ><i class="material-icons" (click)="onDelete(card)" >delete</i></h4>
+    </div>
+  </div>
+
+
+ 
