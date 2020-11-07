@@ -25,7 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## For the server used in services.ts file
 
 Open https://github.com/LabaniSarkar-09/Json-Server and run the server.
-follow the README.me section to run the file.
+follow the README.me section to run the code.
 
 
 ## Further help
