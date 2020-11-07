@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { cards } from "../models/cards";
 import { UserdataService } from '../userdata.service';
 @Component({
@@ -9,8 +10,10 @@ import { UserdataService } from '../userdata.service';
 export class HomeComponent implements OnInit {
    card:cards[];
 
-  constructor(private userdataService:UserdataService) { 
+  constructor(private userdataService:UserdataService, private titleService:Title) { 
+    this.titleService.setTitle("Home");
   }
+
 
   ngOnInit(){
    this.userdataService.getData().subscribe(cards =>{

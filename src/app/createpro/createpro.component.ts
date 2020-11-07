@@ -8,6 +8,7 @@ import { startWith, map } from 'rxjs/operators'
 import { cards } from '../models/cards'
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class CreateproComponent{
      pageTitle: string;
 
   constructor(private fromBuilder: FormBuilder, private userdataService:UserdataService,
-    private router: Router, private route: ActivatedRoute) { 
+    private router: Router, private route: ActivatedRoute, private titleService: Title) { 
+      this.titleService.setTitle("Profile Details");
   } 
 
   ngOnInit(): void {
@@ -51,9 +53,9 @@ export class CreateproComponent{
       id: [''],
       first:  ['',Validators.required],
       lastname: ['',Validators.required],
-      eid: ['',Validators.required, Validators.email],
+      eid: ['',[Validators.required, Validators.email]],
       dob: ['',Validators.required],
-      country: '',
+      country: ['Indian'],
       imagepath: ['']
     });
 
@@ -111,13 +113,13 @@ onSubmit()
     if (id) {
       this.userdataService.updateCard(formData, +id).subscribe(
         res => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/']);
         },
       );
     } else {
       this.userdataService.createCard(formData).subscribe(
         res => {
-            this.router.navigate(['/home']); 
+            this.router.navigate(['/']); 
         },
       );
     }

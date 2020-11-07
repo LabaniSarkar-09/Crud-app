@@ -1,7 +1,7 @@
 
 <div class="col mb-4">
     <div class="card">
-      <img [src]="card.imagepath" class="card-img-top" alt="..." >
+      <img src="https://static.pexels.com/photos/7357/startup-photos.jpg" class="card-img-top" alt="..." >  <!--stactic imagepath -->
       <div class="card-body">
         <h1 class="item-card-title mt-3 mb-3"><a class="text-underline" [routerLink]="['/edit', card.id]" routerLinkActive="active">{{ card.first }} {{ card.lastname }} </a></h1>
         <p class="card-text">Email id: {{ card.eid }}

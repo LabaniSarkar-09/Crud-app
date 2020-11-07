@@ -4,7 +4,7 @@ import { CreateproComponent } from './createpro/createpro.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent},
   {path: 'createpro', component: CreateproComponent},
   { path: 'edit/:id', component: CreateproComponent}
 ];

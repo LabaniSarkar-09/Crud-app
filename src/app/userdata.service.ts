@@ -33,7 +33,8 @@ export class UserdataService {
   }
   
   getCard(id:number) {
-    return this.http.get<cards>(this.Url);
+    const url = `${this.Url}/${id}`;
+    return this.http.get<cards>(url);
   }
   
 }
